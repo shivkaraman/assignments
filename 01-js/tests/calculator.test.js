@@ -72,9 +72,7 @@ describe('Calculator', () => {
 		expect(calc.getResult()).toBe(24.5);
 	});
 	test('calculate complex expression with spaces', () => {
-		calc.calculate(
-			'10 +   2 *    (   6 - (4 + 1) / 2) + 7'
-		);
+		calc.calculate('10 +   2 *    (   6 - (4 + 1) / 2) + 7');
 		expect(calc.getResult()).toBe(24);
 	});
 
@@ -85,9 +83,7 @@ describe('Calculator', () => {
 
 	test('calculate expression with invalid characters', () => {
 		expect(() => calc.calculate('5 + abc')).toThrow(Error);
-		expect(() =>
-			calc.calculate('10 * (2 + 3) + xyz')
-		).toThrow(Error);
+		expect(() => calc.calculate('10 * (2 + 3) + xyz')).toThrow(Error);
 	});
 
 	test('calculate division by zero', () => {
@@ -113,12 +109,8 @@ describe('Calculator', () => {
 	});
 
 	test('expression with invalid parentheses', () => {
-		expect(() => calc.calculate('10 + (2 + 3')).toThrow(
-			Error
-		);
-		expect(() => calc.calculate('10 + 2) + 3')).toThrow(
-			Error
-		);
+		expect(() => calc.calculate('10 + (2 + 3')).toThrow(Error);
+		expect(() => calc.calculate('10 + 2) + 3')).toThrow(Error);
 		expect(() => calc.calculate(')10 + 2(')).toThrow(Error);
 	});
 });
