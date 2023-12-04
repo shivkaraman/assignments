@@ -5,7 +5,26 @@
 */
 
 function isAnagram(str1, str2) {
+	if (str1.length !== str2.length) return false;
 
+	let visited = Array(str2.length).fill(false); //We need a visited array because strings may have repeated characters
+
+	for (let i = 0; i < str1.length; i++) {
+		let flag = false;
+
+		//Checking if str1[i] is present in str2
+		for (let j = 0; j < str2.length; j++) {
+			if (visited[j] === true) {
+				continue;
+			} else if (str1[i] === str2[j]) {
+				visited[j] = true;
+				flag = true;
+				break;
+			}
+		}
+		if (flag === false) return false;
+	}
+	return true;
 }
 
 module.exports = isAnagram;
