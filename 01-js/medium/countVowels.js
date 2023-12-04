@@ -6,7 +6,22 @@
 */
 
 function countVowels(str) {
-    // Your code here
+	let count = 0;
+	str = str.replace(/[^a-zA-Z]/g, '').toLowerCase(); //Removes all aplhabetic characters
+
+	for (let i = 0; i < str.length; i++) {
+		const char = str[i];
+		if (
+			char === 'a' ||
+			char === 'e' ||
+			char === 'i' ||
+			char === 'o' ||
+			char === 'u'
+		) {
+			count++;
+		}
+	}
+	return count;
 }
 
 module.exports = countVowels;
