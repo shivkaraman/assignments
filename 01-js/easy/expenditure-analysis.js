@@ -19,7 +19,11 @@ function calculateTotalSpentByCategory(transactions) {
 		}
 	});
 
-	return Array.from(categoryTotal);
+	const result = Array.from(categoryTotal).map(([category, total]) => {
+		return { category, totalSpent: total };
+	});
+
+	return result;
 }
 
 module.exports = calculateTotalSpentByCategory;

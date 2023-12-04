@@ -8,6 +8,8 @@ function isAnagram(str1, str2) {
 	if (str1.length !== str2.length) return false;
 
 	let visited = Array(str2.length).fill(false); //We need a visited array because strings may have repeated characters
+	str1 = str1.toLowerCase();
+	str2 = str2.toLowerCase();
 
 	for (let i = 0; i < str1.length; i++) {
 		let flag = false;
@@ -24,6 +26,13 @@ function isAnagram(str1, str2) {
 		}
 		if (flag === false) return false;
 	}
+
+	/*
+		Simplest approach : 
+		str1 = str1.toLowerCase.sort();
+		str2 = str2.toLowerCase.sort();
+		return str1 === str2;
+	*/
 	return true;
 }
 
