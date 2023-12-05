@@ -49,12 +49,4 @@ class Todo {
 	}
 }
 
-let todoList;
-todoList = new Todo();
-todoList.add('Task 1');
-todoList.add('Task 2');
-todoList.add('Task 3');
-
-todoList.remove(1);
-console.log(todoList.getAll());
 module.exports = Todo;

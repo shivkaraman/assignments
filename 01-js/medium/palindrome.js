@@ -5,7 +5,6 @@
 
 function isPalindrome(str) {
 	str = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-	console.log(str);
 	for (let i = 0; i < Math.floor(str.length / 2); i++) {
 		if (str[i] !== str[str.length - i - 1]) {
 			return false;
@@ -14,5 +13,4 @@ function isPalindrome(str) {
 	return true;
 }
 
-console.log(!!isPalindrome('Able, was I ere I saw Elba!'));
 module.exports = isPalindrome;
