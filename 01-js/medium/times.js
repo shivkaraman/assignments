@@ -9,19 +9,20 @@ There is no automated test for this one, this is more for you to understand time
 */
 
 function calculateTime(n) {
-	const start = Date.now();
+	const start = Date.getTime();
 
 	let sum = 0;
 	for (let i = 1; i <= n; i++) {
 		sum += i;
 	}
 
-	const end = Date.now();
+	const end = Date.getTime();
+
+	const time = end - start;
+	console.log(`Computation time for 1-${n}: ${time} ms`);
 	return end - start;
 }
 
-console.log('Computation time for 1-100: ' + calculateTime(100) + ' ms');
-console.log('Computation time for 1-100000: ' + calculateTime(100000) + ' ms');
-console.log(
-	'Computation time for 1-1000000000: ' + calculateTime(1000000000) + ' ms'
-);
+calculateTime(100);
+calculateTime(100000);
+calculateTime(1000000000);
