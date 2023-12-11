@@ -1,64 +1,43 @@
 /*
- * Write 3 different functions that return promises that resolve after 1, 2, and 3 seconds respectively.
+ * Write 3 different functions that return promises that resolve after t1, t2, and t3 seconds respectively.
  * Write a function that sequentially calls all 3 of these functions in order.
- * Print out the time it takes to complete the entire operation.
+ * Return a promise chain which return the time in milliseconds it takes to complete the entire operation.
  * Compare it with the results from 3-promise-all.js
  */
 
-function waitOneSecond() {
+function wait1(t) {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve();
-		}, 1000);
+		}, t * 1000);
 	});
 }
 
-function waitTwoSecond() {
+function wait2(t) {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve();
-		}, 2000);
+		}, t * 1000);
 	});
 }
 
-function waitThreeSecond() {
+function wait3(t) {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve();
-		}, 3000);
+		}, t * 1000);
 	});
 }
 
-function getCurrentTime() {
-	return new Date().getTime();
-}
-
-function calculateTime() {
-	let start = getCurrentTime();
-	let end = null;
-	Promise.all([waitThreeSecond(), waitTwoSecond(), waitThreeSecond()]).then(
-		() => {
-			end = getCurrentTime();
-			console.log(
-				`Time required for Promise-all: ${(end - start) / 1000} seconds`
-			);
-		}
-	);
-
-	start = getCurrentTime();
-	end = null;
-	waitOneSecond().then(() => {
-		waitTwoSecond().then(() => {
-			waitThreeSecond().then(() => {
-				end = getCurrentTime();
-				console.log(
-					`Time required for Promise-Chiaining:${
-						(end - start) / 1000
-					} seconds`
-				);
-			});
+function calculateTime(t1, t2, t3) {
+	let start = new Date().getTime();
+	return wait1(t1)
+		.then(() => wait2(t2))
+		.then(() => wait3(t3))
+		.then(() => {
+			const end = new Date().getTime();
+			return end - start;
 		});
-	});
 }
 
-calculateTime();
+module.exports = calculateTime;

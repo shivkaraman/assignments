@@ -5,12 +5,9 @@
 function wait(n) {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			resolve(new Date().getTime());
-		}, n);
+			resolve();
+		}, n * 1000);
 	});
 }
 
-const start = new Date().getTime();
-wait(3000).then((end) => {
-	console.log('Promise Resolved in : ' + (end - start) / 1000 + 's');
-});
+module.exports = wait;
