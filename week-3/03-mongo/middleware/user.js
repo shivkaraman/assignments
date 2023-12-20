@@ -1,6 +1,24 @@
+const { User } = require('../db/index');
+
 function userMiddleware(req, res, next) {
-    // Implement user auth logic
-    // You need to check the headers and validate the user from the user DB. Check readme for the exact headers to be expected
+    const { username, password } = req.headers;
+
+    if (!username || !password) {
+        return res.status(500).json({ error: 'Fill login credentials' });
+    }
+
+    User.findOne({ username })
+        .then((user) => {
+            if (!user)
+                return res.status(500).json({ error: 'Invalid Username' });
+
+            if (user.password !== password)
+                return res.status(500).json({ error: 'Invalid password' });
+            next();
+        })
+        .catch(() => {
+            return res.status(500).json({ error: 'Internal Server Error' });
+        });
 }
 
 module.exports = userMiddleware;
