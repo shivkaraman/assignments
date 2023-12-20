@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "01-requestcount": "npx jest ./tests/01-requestcount.spec",
+    "02-ratelimitter": "npx jest ./tests/02-ratelimitter.spec",
+    "03-errorcount": "npx jest ./tests/01-requestcount.spec",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
