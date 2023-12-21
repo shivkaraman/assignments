@@ -1,7 +1,15 @@
+const { verifyJwt } = require('../utils/jwt');
+
 // Middleware for handling auth
 function adminMiddleware(req, res, next) {
-    // Implement admin auth logic
-    // You need to check the headers and validate the admin from the admin DB. Check readme for the exact headers to be expected
+    const { token } = req.headers;
+
+    try {
+        const decoded = verifyJwt(token);
+        next();
+    } catch (err) {
+        return res.status(401).json({ error: 'Invalid or Expired token' });
+    }
 }
 
 module.exports = adminMiddleware;
