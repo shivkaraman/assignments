@@ -14,33 +14,34 @@ const { z } = require('zod');
  *                        the password does not meet the length requirement.
  */
 
-const Username = z.string().email({ msg: 'Username must be a valid email' });
-const Password = z.string().min(6, {
+const emailSchema = z.string().email({ msg: 'Username must be a valid email' });
+const passwordSchema = z.string().min(6, {
     msg: 'Password should contain atleast 6 characters',
 });
 
 function validateInput(username, password) {
-    try {
-        Username.parse(username);
-        Password.parse(password);
-        return true;
-    } catch (err) {
-        return false;
-    }
-}
-function signJwt(username, password) {
     if (!username || !password) return null;
 
+    const usernameResponse = emailSchema.safeParse(username);
+    const passwordResponse = passwordSchema.safeParse(password);
+
+    if (!usernameResponse.success || !passwordResponse.success) {
+        return false;
+    }
+    return true;
+}
+
+function signJwt(username, password) {
     if (!validateInput(username, password)) return null;
 
-    const token = jwt.sign(
+    const signature = jwt.sign(
         {
             username,
             password,
         },
         jwtPassword
     );
-    return token;
+    return signature;
 }
 
 /**
@@ -51,6 +52,7 @@ function signJwt(username, password) {
  *                    Returns false if the token is invalid, expired, or not verified
  *                    using the secret key.
  */
+
 function verifyJwt(token) {
     try {
         const decoded = jwt.verify(token, jwtPassword);
@@ -67,6 +69,7 @@ function verifyJwt(token) {
  * @returns {object|false} The decoded payload of the JWT if the token is a valid JWT format.
  *                         Returns false if the token is not a valid JWT format.
  */
+
 function decodeJwt(token) {
     return !!jwt.decode(token);
 }
