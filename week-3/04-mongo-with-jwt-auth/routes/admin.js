@@ -37,27 +37,22 @@ adminRouter.post('/signup', async (req, res) => {
 adminRouter.post('/signin', async (req, res) => {
     const { username, password } = req.headers;
 
-    const existingAdmin = await Admin.findOne({ username });
-    if (!!existingAdmin) {
+    if (!username || !password) {
         return res
-            .status(409)
-            .json({ error: 'Admin with this username already exists' });
+            .status(400)
+            .json({ error: 'Username and Password required' });
     }
 
-    const admin = new Admin({
-        username,
-        password,
-    });
+    Admin.findOne({ username }).then((user) => {
+        if (!user) return res.status(401).json({ error: 'Invalid username' });
+        if (user.password !== password) {
+            return res.status(401).json({ error: 'Invalid password' });
+        }
 
-    admin
-        .save()
-        .then(() => {
-            const token = signJwt(username, password);
-            return res.status(201).json({ token });
-        })
-        .catch((err) => {
-            return res.status(500).json({ error: err });
-        });
+        const token = signJwt(username, password);
+
+        return res.status(201).json({ token });
+    });
 });
 
 adminRouter.post('/courses', adminMiddleware, (req, res) => {

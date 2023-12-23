@@ -34,24 +34,22 @@ userRouter.post('/signup', async (req, res) => {
 userRouter.post('/signin', async (req, res) => {
     const { username, password } = req.headers;
 
-    const existingUser = await User.findOne({ username });
-    if (!!existingUser) {
-        return res.status(409).json({ error: 'Username already exists' });
+    if (!username || !password) {
+        return res
+            .status(400)
+            .json({ error: 'Username and Password required' });
     }
 
-    const user = new User({
-        username,
-        password,
-    });
+    User.findOne({ username }).then((user) => {
+        if (!user) return res.status(401).json({ error: 'Invalid username' });
+        if (user.password !== password) {
+            return res.status(401).json({ error: 'Invalid password' });
+        }
 
-    user.save()
-        .then(() => {
-            const token = signJwt(username, password);
-            return res.status(201).json({ token });
-        })
-        .catch((err) => {
-            return res.status(500).json({ error: err });
-        });
+        const token = signJwt(username, password);
+
+        return res.status(201).json({ token });
+    });
 });
 
 userRouter.get('/courses', (req, res) => {

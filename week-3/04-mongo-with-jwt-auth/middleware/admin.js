@@ -5,7 +5,7 @@ function adminMiddleware(req, res, next) {
     const { token } = req.headers;
 
     try {
-        const decoded = verifyJwt(token);
+        verifyJwt(token);
         next();
     } catch (err) {
         return res.status(401).json({ error: 'Invalid or Expired token' });
