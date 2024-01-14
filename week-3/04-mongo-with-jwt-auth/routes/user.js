@@ -101,3 +101,5 @@ userRouter.get('/purchasedCourses', userMiddleware, async (req, res) => {
 });
 
 module.exports = userRouter;
+
+module.exports = router
