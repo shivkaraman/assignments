@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.todos-form {
+    flex: 0.3;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
