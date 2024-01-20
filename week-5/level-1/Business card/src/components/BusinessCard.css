@@ -1,0 +1,45 @@
+.business-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 15px;
+    max-width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+h2.name {
+    margin-bottom: 0px;
+}
+
+p.description {
+    margin-top: 0px;
+    color: grey;
+    font-size: 0.8em;
+    padding-bottom: 10px;
+}
+
+.interests {
+    padding: 10px 0;
+}
+
+.interest-list {
+    display: flex;
+    max-height: 90px;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.social-handles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.social-handles > * {
+    color: white;
+    background-color: rgb(14, 88, 149);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px 5px;
+}
