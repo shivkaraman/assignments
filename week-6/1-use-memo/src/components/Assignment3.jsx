@@ -12,13 +12,21 @@ export const Assignment3 = () => {
     ]);
 
     // Your code starts here
-    const totalValue = 0;
+    const totalValue = useMemo(() => {
+        let totVal = 0;
+        items.forEach((item) => {
+            totVal += item.value;
+        });
+        return totVal;
+    }, [items]);
     // Your code ends here
     return (
         <div>
             <ul>
                 {items.map((item, index) => (
-                    <li key={index}>{item.name} - Price: ${item.value}</li>
+                    <li key={index}>
+                        {item.name} - Price: ${item.value}
+                    </li>
                 ))}
             </ul>
             <p>Total Value: {totalValue}</p>
