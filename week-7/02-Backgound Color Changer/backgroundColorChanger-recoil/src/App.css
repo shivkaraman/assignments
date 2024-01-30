@@ -1,0 +1,30 @@
+li {
+    list-style: none;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    box-sizing: border-box;
+    margin: 0px;
+}
+.theme-setter {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    margin: 15px;
+    box-shadow: 30px 26px 6px -7px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    color: white;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
