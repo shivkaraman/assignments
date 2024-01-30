@@ -1,0 +1,55 @@
+.card {
+    max-width: 350px;
+    border: 1px solid black;
+    margin: 15px;
+}
+
+p {
+    color: #8e8787;
+}
+.img-container,
+.background-image {
+    width: 100%;
+}
+
+.img-container {
+    position: relative;
+    height: 65%;
+}
+
+.background-image {
+    height: 150px;
+}
+
+.display-picture {
+    position: absolute;
+    border-radius: 50%;
+    border: 2.5px solid white;
+    height: 100px;
+    width: 100px;
+    top: 60%;
+    right: 35%;
+}
+
+.personal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.body {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 30px;
+}
+
+.body > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
