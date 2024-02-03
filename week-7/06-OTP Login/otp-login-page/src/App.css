@@ -1,0 +1,67 @@
+.app {
+    background-color: #1e1e1e;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    border: 3px solid rgb(180, 176, 176);
+    border-radius: 20px;
+    height: 300px;
+    width: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h1 {
+    padding: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ph-input {
+    border: 1.5px solid rgb(180, 176, 176);
+    border-radius: 20px;
+    background-color: #1e1e1e;
+    padding: 10px 15px;
+    margin: 15px;
+    width: 100%;
+    color: gray;
+}
+
+button {
+    border: 1.5px solid rgb(180, 176, 176);
+    border-radius: 20px;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.otp-input-container {
+    display: flex;
+}
+
+p {
+    color: gray;
+    font-size: 1.2em;
+}
+.otp-input {
+    width: 50px;
+    height: 50px;
+    margin: 15px 7.5px;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+}
