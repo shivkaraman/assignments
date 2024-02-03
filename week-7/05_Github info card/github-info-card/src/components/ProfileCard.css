@@ -1,0 +1,30 @@
+.github-card {
+    width: 400px;
+    height: 550px;
+    border-radius: 20px;
+    background-color: #0d1117;
+    color: #d8dcdf;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
+        Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+.dp-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+img {
+    width: 275px;
+    border-radius: 50%;
+}
+
+.header,
+.more-details {
+    margin: 15px 40px;
+}
+
+p {
+    color: #747c85;
+}
