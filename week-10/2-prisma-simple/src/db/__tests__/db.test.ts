@@ -9,9 +9,7 @@ beforeAll(async () => {
     await dropTables();
 });
 
-afterAll(async () => {
-
-});
+afterAll(async () => {});
 
 describe('User Database Operations', () => {
     test('createUser inserts a new user into the database', async () => {
@@ -41,36 +39,36 @@ describe('Todo Operations', () => {
     let userId: number;
 
     beforeAll(async () => {
-      // Create a user for todos
-      const user = await createUser('todouser', 'password', 'Todo User');
-      userId = user.id;
+        // Create a user for todos
+        const user = await createUser('todouser', 'password', 'Todo User');
+        userId = user.id;
     });
 
     test('createTodo inserts a new todo for a user', async () => {
-      const title = 'Test Todo';
-      const description = 'Test Description';
-      const todo = await createTodo(userId, title, description);
+        const title = 'Test Todo';
+        const description = 'Test Description';
+        const todo = await createTodo(userId, title, description);
 
-      expect(todo).toHaveProperty('title', title);
-      expect(todo).toHaveProperty('description', description);
-      expect(todo).toHaveProperty('done', false);
+        expect(todo).toHaveProperty('title', title);
+        expect(todo).toHaveProperty('description', description);
+        expect(todo).toHaveProperty('done', false);
     });
 
     test('updateTodo marks a todo as done', async () => {
-      const todo = await createTodo(userId, 'Update Test', 'To be updated');
-      const updatedTodo = await updateTodo(todo.id);
+        const todo = await createTodo(userId, 'Update Test', 'To be updated');
+        const updatedTodo = await updateTodo(todo.id);
 
-      expect(updatedTodo).toHaveProperty('done', true);
+        expect(updatedTodo).toHaveProperty('done', true);
     });
 
     test('getTodos retrieves all todos for a user', async () => {
-      // Assuming createTodo adds to the todos for the user
-      await createTodo(userId, 'Another Todo', 'Another description');
-      const todos = await getTodos(userId);
+        // Assuming createTodo adds to the todos for the user
+        await createTodo(userId, 'Another Todo', 'Another description');
+        const todos = await getTodos(userId);
 
-      expect(todos.length).toBeGreaterThan(0);
-      todos.forEach(todo => {
-        expect(todo).toHaveProperty('userId', userId);
-      });
+        expect(todos.length).toBeGreaterThan(0);
+        todos.forEach((todo) => {
+            expect(todo).toHaveProperty('userId', userId);
+        });
     });
 });
